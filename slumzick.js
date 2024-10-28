@@ -30,7 +30,7 @@ client.connect(Port, Host, () => {
         client.write(Buffer1);
 
 
-        setImmediate(sendPackets); // Repeat without delay
+        setImmediate(sendPackets);
     }
 
     sendPackets();
@@ -38,10 +38,9 @@ client.connect(Port, Host, () => {
 
 client.on('error', (err) => {
     console.error('Error:', err);
-    client.destroy(); // Ensure the socket is closed on error
-    setTimeout(connectAndSend, 10); // Wait and retry connection on error
+    client.destroy(); 
+    setTimeout(connectAndSend, 10); 
 });
 }
 
-// Start the connection and sending process
 connectAndSend();
